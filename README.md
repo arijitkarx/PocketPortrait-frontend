@@ -1,82 +1,102 @@
-# 💻 Frontend – Pocket Portrait
+# Finyo - Financial Tracker
 
-The frontend of Pocket Portrait is built with:
+A modern, sleek financial transaction tracking webapp built with SvelteJS and Tailwind CSS.
 
-* **Framework:** Next.js (v15.3.4)
-* **Styling:** Tailwind CSS v4
-* **Language:** TypeScript
-* **Charts:** Chart.js + react-chartjs-2
-* **HTTP Requests:** Axios
-* **Linting:** ESLint
+## Features
 
----
+- 📊 **Dashboard** - View financial overview with stats and charts
+- 💳 **Transaction Management** - Track income and expenses
+- 💰 **Budget Tracking** - Set and monitor budgets
+- 🏷️ **Tags & Categories** - Organize transactions with custom tags and categories
+- 📱 **Responsive Design** - Works on desktop and mobile devices
+- 🎨 **Beautiful UI** - Built with Tailwind CSS for a modern look
 
-### 🔒 Features
+## Tech Stack
 
-### 🔒 Features
+- **Frontend**: SvelteJS 4 + TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **HTTP Client**: Fetch API
+- **Charts**: Chart.js
 
-- ✅ **Secure Authentication** – manages user sessions and protects routes.
-- ✅ **Budget Tracking** – set monthly budgets and visualize spending.
-- ✅ **Alerts** – warns users if >80% of a budget is used.
-- ✅ **Reports & Analysis** – provides insights into Transactions, trends, and budget utilization through interactive charts and summaries.
-- ✅ **Responsive UI** – mobile-friendly layouts with Tailwind CSS.
-- ✅ **Data Visualization** – charts built using Chart.js for insights.
+## Getting Started
 
----
+### Prerequisites
 
-### 🌳 Project Structure (Frontend)
+- Node.js 16+ and npm
 
-```
-/pocketpotrait-frontend
-  ├── /app
-  ├── /components
-  ├── /pages
-  ├── /styles
-  ├── /public
-  ├── /hooks
-  ├── /utils
-  ├── next.config.js
-  ├── tailwind.config.js
-  ├── tsconfig.json
-  └── .env
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone <repo-url>
+cd PocketPortrait-frontend
 ```
 
-*(Adjust paths if your structure differs!)*
-
----
-
-### ⚙️ Environment Variables
-
-Create a `.env` file at the frontend root:
-
-```
-NEXT_PUBLIC_API_URL=https://your-api-domain.com/api
-```
-
-> **Note:** This must point to your backend server’s base URL.
-
----
-
-### 🚀 Setup & Run Frontend
-
-#### Install dependencies
+2. Install dependencies:
 
 ```bash
 npm install
 ```
 
-#### Run in development mode
+3. Create `.env.local` and configure the backend URL:
+
+```bash
+cp .env.example .env.local
+```
+
+### Development
+
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-#### Build production version
+The app will be available at `http://localhost:5173`
+
+### Build
+
+Build for production:
 
 ```bash
 npm run build
-npm start
 ```
 
-Frontend runs by default on **[http://localhost:3000](http://localhost:3000)**
+### Backend API
 
+Finyo connects to a backend API running at `http://localhost:5000`. The API proxy is configured in `vite.config.js`.
+
+**API Endpoints Used:**
+
+- `POST /api/auth/login` - User login
+- `POST /api/auth/register` - User registration
+- `GET /api/transactions/transactions` - Get transactions list
+- `POST /api/transactions` - Create transaction
+- `PUT /api/transactions/:id` - Update transaction
+- `DELETE /api/transactions/:id` - Delete transaction
+- `GET /api/transactions/dashboard` - Get dashboard stats
+- `GET /api/budgets` - Get budgets
+- `POST /api/budgets` - Create budget
+
+## Project Structure
+
+```
+src/
+├── components/        # Svelte components
+│   ├── App.svelte
+│   ├── Sidebar.svelte
+│   ├── Dashboard.svelte
+│   ├── TransactionList.svelte
+│   └── AddTransaction.svelte
+├── lib/
+│   ├── stores.ts      # Svelte stores for state management
+│   └── types.ts       # TypeScript type definitions
+├── main.ts            # Application entry point
+└── app.css            # Global styles with Tailwind directives
+```
+
+## License
+
+MIT
