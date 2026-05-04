@@ -38,7 +38,7 @@
   <div class="flex flex-wrap items-center justify-between gap-4">
     <div>
       <p class="text-sm uppercase tracking-[0.3em] text-slate-400">Budgets</p>
-      <h1 class="text-4xl font-bold text-white">Monthly budgets</h1>
+      <h1 class="text-3xl font-bold text-white sm:text-4xl">Monthly budgets</h1>
     </div>
     <button class="btn-primary" on:click={() => (showBudgetModal = true)}>+ New Budget</button>
   </div>
@@ -46,7 +46,7 @@
   {#if loading}
     <div class="card">Loading budgets...</div>
   {:else}
-    <div class="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
+    <div class="grid gap-4 sm:gap-6 lg:grid-cols-2 xl:grid-cols-3">
       {#each budgets as budget}
         <article class="card space-y-4">
           <div class="flex items-center justify-between gap-3">
@@ -69,7 +69,7 @@
       {/each}
     </div>
 
-    <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+    <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
       {#each alerts as alert}
         <div class="card border-amber-500/20 bg-amber-500/10 text-amber-100">
           <p class="text-sm uppercase tracking-[0.2em]">{alert.severity}</p>

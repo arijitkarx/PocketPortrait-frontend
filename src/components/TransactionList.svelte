@@ -114,31 +114,31 @@
   <div class="flex flex-wrap items-start justify-between gap-4">
     <div>
       <p class="text-sm uppercase tracking-[0.3em] text-slate-400">Transactions</p>
-      <h1 class="text-4xl font-bold text-white">Filtered ledger</h1>
+      <h1 class="text-3xl font-bold text-white sm:text-4xl">Filtered ledger</h1>
       <p class="mt-2 text-sm text-slate-400">Use the controls below to slice the list by date, tags, type, mode, or category.</p>
     </div>
     <button class="btn-primary" on:click={() => openEditor()}>+ Add Transaction</button>
   </div>
 
-  <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
     <article class="card">
       <p class="text-sm text-slate-400">Transactions</p>
-      <p class="mt-2 text-3xl font-black text-white">{summary.count}</p>
+      <p class="mt-2 text-2xl font-black text-white sm:text-3xl">{summary.count}</p>
       <p class="mt-2 text-sm text-slate-400">matching your filters</p>
     </article>
     <article class="card">
       <p class="text-sm text-slate-400">Expense total</p>
-      <p class="mt-2 text-3xl font-black text-rose-400">₹{formatMoney(summary.spent)}</p>
+      <p class="mt-2 text-2xl font-black text-rose-400 sm:text-3xl">₹{formatMoney(summary.spent)}</p>
       <p class="mt-2 text-sm text-slate-400">{filteredTransactions.filter(transaction => transaction.type === 'expense').length} expense entries</p>
     </article>
     <article class="card">
       <p class="text-sm text-slate-400">Income total</p>
-      <p class="mt-2 text-3xl font-black text-emerald-400">₹{formatMoney(summary.income)}</p>
+      <p class="mt-2 text-2xl font-black text-emerald-400 sm:text-3xl">₹{formatMoney(summary.income)}</p>
       <p class="mt-2 text-sm text-slate-400">{filteredTransactions.filter(transaction => transaction.type === 'income').length} income entries</p>
     </article>
     <article class="card">
       <p class="text-sm text-slate-400">Net amount</p>
-      <p class="mt-2 text-3xl font-black text-sky-400">₹{formatMoney(summary.net)}</p>
+      <p class="mt-2 text-2xl font-black text-sky-400 sm:text-3xl">₹{formatMoney(summary.net)}</p>
       <p class="mt-2 text-sm text-slate-400">after filters are applied</p>
     </article>
   </div>

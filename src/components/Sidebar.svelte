@@ -26,7 +26,7 @@
   }
 </script>
 
-<aside class="flex h-screen w-64 flex-col border-r border-white/10 bg-slate-950/80 text-slate-100 shadow-2xl shadow-slate-950/30 backdrop-blur-xl">
+<aside class="hidden h-screen w-64 flex-col border-r border-white/10 bg-slate-950/80 text-slate-100 shadow-2xl shadow-slate-950/30 backdrop-blur-xl md:flex">
   <!-- Logo -->
   <div class="border-b border-white/10 p-6">
     <h2 class="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-2xl font-bold text-transparent">Finyo</h2>
@@ -78,3 +78,19 @@
     </button>
   </div>
 </aside>
+
+<nav class="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-slate-950/95 px-2 py-2 text-slate-100 shadow-2xl shadow-slate-950/50 backdrop-blur-xl md:hidden">
+  <ul class="grid grid-cols-4 gap-1">
+    {#each menuItems as item}
+      <li>
+        <button
+          on:click={() => navigateTo(item.view)}
+          class="flex w-full flex-col items-center justify-center gap-1 rounded-xl px-2 py-2 text-xs font-medium text-slate-300 transition hover:bg-white/5 hover:text-white"
+        >
+          <span class="text-lg leading-none">{item.icon}</span>
+          <span class="truncate">{item.name}</span>
+        </button>
+      </li>
+    {/each}
+  </ul>
+</nav>

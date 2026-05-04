@@ -15,7 +15,7 @@ body {
 }
 
 #app {
-    @apply h-screen w-screen overflow-hidden;
+    @apply min-h-screen w-screen overflow-x-hidden;
 }
 
 a {
@@ -45,7 +45,7 @@ button {
     }
 
     .card {
-        @apply rounded-2xl border border-white/10 bg-white/95 p-6 text-slate-900 shadow-2xl shadow-slate-950/20 backdrop-blur dark:border-white/10 dark:bg-slate-900/85 dark:text-slate-100;
+        @apply rounded-2xl border border-white/10 bg-white/95 p-4 text-slate-900 shadow-2xl shadow-slate-950/20 backdrop-blur dark:border-white/10 dark:bg-slate-900/85 dark:text-slate-100 sm:p-6;
     }
 
     .input-field {

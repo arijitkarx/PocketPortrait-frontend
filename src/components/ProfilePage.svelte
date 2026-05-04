@@ -39,7 +39,7 @@
   <div class="flex flex-wrap items-center justify-between gap-4">
     <div>
       <p class="text-sm uppercase tracking-[0.3em] text-slate-400">Profile</p>
-      <h1 class="text-4xl font-bold text-white">Your account</h1>
+      <h1 class="text-3xl font-bold text-white sm:text-4xl">Your account</h1>
     </div>
     <button class="btn-secondary" on:click={logout}>Logout</button>
   </div>
@@ -49,7 +49,7 @@
   {:else if error}
     <div class="card border-rose-500/20 bg-rose-500/10 text-rose-100">{error}</div>
   {:else}
-    <div class="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+    <div class="grid gap-4 sm:gap-6 lg:grid-cols-[0.8fr_1.2fr]">
       <div class="card space-y-5">
         <div class="flex items-center gap-4">
           <div class="flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-indigo-500 to-violet-600 text-3xl font-black text-white">
