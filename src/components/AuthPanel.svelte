@@ -1,7 +1,6 @@
 <script lang="ts">
   import { authStore, currentViewStore, persistAuthToken } from '$lib/stores';
   import type { User } from '$lib/types';
-  import dotenv from 'dotenv';
 
 
   export let mode: 'login' | 'signup' | 'forgot' = 'login';
