@@ -7,16 +7,17 @@
   let alerts: Array<{ category: string; percentage: number; spent: number; limit: number; severity: string }> = [];
   let loading = true;
   let showBudgetModal = false;
+  const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
 
   async function loadBudgets() {
     loading = true;
     try {
       const [budgetResponse, alertResponse] = await Promise.all([
-        fetch('/api/budgets', {
+        fetch(`${API_BASE}/api/budgets`, {
           headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` },
           credentials: 'include',
         }),
-        fetch('/api/budgets/alerts', {
+        fetch(`${API_BASE}/api/budgets/alerts`, {
           headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` },
           credentials: 'include',
         }),

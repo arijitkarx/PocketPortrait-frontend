@@ -1,9 +1,11 @@
 <script lang="ts">
   import { authStore, currentViewStore, persistAuthToken } from '$lib/stores';
   import type { User } from '$lib/types';
+  import dotenv from 'dotenv';
+
 
   export let mode: 'login' | 'signup' | 'forgot' = 'login';
-
+  const backendUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
   let loginEmail = '';
   let loginPassword = '';
   let loginError = '';
@@ -26,7 +28,7 @@
 
   async function fetchOAuth(provider: 'google') {
     try {
-      const response = await fetch(`/api/auth/oauth/${provider}`);
+      const response = await fetch(`${backendUrl}/api/auth/oauth/${provider}`);
       const data = await response.json();
       if (data.url) {
         window.location.href = data.url;
@@ -42,7 +44,7 @@
     loginError = '';
 
     try {
-      const response = await fetch('/api/auth/login', {
+      const response = await fetch(`${backendUrl}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -71,7 +73,7 @@
     signupError = '';
 
     try {
-      const response = await fetch('/api/auth/register', {
+      const response = await fetch(`${backendUrl}/api/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -107,7 +109,7 @@
     resetMessage = '';
 
     try {
-      const response = await fetch('/api/auth/forgot-password', {
+      const response = await fetch(`${backendUrl}/api/auth/forgot-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: resetEmail }),

@@ -3,6 +3,8 @@
 
   const dispatch = createEventDispatcher();
 
+  const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
+
   export let budget: { category: string; limitAmount: number } | null = null;
 
   let category = budget?.category || 'Food';
@@ -22,7 +24,7 @@
     error = '';
 
     try {
-      const response = await fetch('/api/budgets', {
+      const response = await fetch(`${API_BASE}/api/budgets`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

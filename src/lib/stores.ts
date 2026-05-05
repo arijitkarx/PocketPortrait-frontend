@@ -55,12 +55,13 @@ export function persistTheme(isDark: boolean) {
 // Transactions Store
 function createTransactionsStore() {
     const { subscribe, set, update } = writable<Transaction[]>([]);
+    const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
 
     return {
         subscribe,
         fetchTransactions: async () => {
             try {
-                const response = await fetch('/api/transactions/transactions?page=1&limit=100', {
+                const response = await fetch(`${API_BASE}/api/transactions/transactions?page=1&limit=100`, {
                     headers: {
                         'Authorization': `Bearer ${safeLocalStorageGet('authToken')}`,
                     },
@@ -77,7 +78,7 @@ function createTransactionsStore() {
         },
         addTransaction: async (transaction: Partial<Transaction>) => {
             try {
-                const response = await fetch('/api/transactions', {
+                const response = await fetch(`${API_BASE}/api/transactions`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -99,7 +100,7 @@ function createTransactionsStore() {
         },
         updateTransaction: async (id: number, transaction: Partial<Transaction>) => {
             try {
-                const response = await fetch(`/api/transactions/${id}`, {
+                const response = await fetch(`${API_BASE}/api/transactions/${id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -123,7 +124,7 @@ function createTransactionsStore() {
         },
         deleteTransaction: async (id: number) => {
             try {
-                await fetch(`/api/transactions/${id}`, {
+                await fetch(`${API_BASE}/api/transactions/${id}`, {
                     method: 'DELETE',
                     headers: {
                         'Authorization': `Bearer ${safeLocalStorageGet('authToken')}`,
@@ -153,7 +154,8 @@ export const dashboardStore = writable({
 
 export async function fetchDashboard() {
     try {
-        const response = await fetch('/api/transactions/dashboard', {
+        const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
+        const response = await fetch(`${API_BASE}/api/transactions/dashboard`, {
             headers: {
                 'Authorization': `Bearer ${safeLocalStorageGet('authToken')}`,
             },

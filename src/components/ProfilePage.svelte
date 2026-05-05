@@ -7,9 +7,11 @@
   let loading = true;
   let error = '';
 
+  const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
+
   onMount(async () => {
     try {
-      const response = await fetch('/api/auth/me', {
+      const response = await fetch(`${API_BASE}/api/auth/me`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('authToken')}`,
         },
